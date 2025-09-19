@@ -1,5 +1,7 @@
 import turtle
-turtle.speed(10)
+
+turtle.tracer(0, 0)
+
 number_of_sides = 100
 
 # head:
@@ -40,15 +42,32 @@ turtle.forward(80)
 turtle.down()
 
 # eyes:
-draw_circle(3)
+y=3
+x=2
+# this circle variable (x) can take values 0.5 to 3-->this variable changes the size of the inner eye pupil, if you make this value the same as y, then it wont have an inner circle, if it is different than the value of y, it has an inner circle (the smaller you make the # the crazier the cat looks)
+if x == y:
+    draw_circle(y)
+elif x < y:
+    draw_circle(y)
+    turtle.up()
+    turtle.goto(-45, -93)
+    turtle.down()
+    draw_circle(x)
 turtle.up()
 turtle.left(33)
-turtle.forward(105)
+turtle.goto(65, -85)
 turtle.down()
-draw_circle(3)
+if x == y:
+    draw_circle(x)
+elif x < y:
+    draw_circle(y)
+    turtle.up()
+    turtle.goto(65, -93)
+    turtle.down()
+    draw_circle(x)
 turtle.up()
+turtle.goto(9, -183)
 turtle.right(123)
-turtle.forward(115)
 turtle.down()
 
 # nose and mouth:
@@ -72,7 +91,7 @@ turtle.forward(20)
 turtle.down()
 
 # whiskers(left):
-def draw_whiskers(angle, number):
+def draw_whiskers_left(angle, number):
     for i in range(number_of_sides//5):
         turtle.forward(9)
         turtle.left(angle / number_of_sides)
@@ -81,19 +100,21 @@ def draw_whiskers(angle, number):
         turtle.forward(9)
         turtle.right(angle / number_of_sides)
 
-draw_whiskers(300, 183)
-turtle.right(183)
-draw_whiskers(200, 182)
-turtle.right(183)
-draw_whiskers(100, 181)
+for whisker_number_left in range(3):
+    draw_whiskers_left(300+whisker_number_left*(-100), 183+whisker_number_left*(-1))
+    turtle.right(183)
+
+
+
 
 turtle.up()
+turtle.left(183)
 turtle.left(13)
 turtle.forward(40)
 turtle.down()
 
 # whiskers(right):
-def draw_whiskers(angle, number):
+def draw_whiskers_right(angle, number):
     for i in range(number_of_sides//5):
         turtle.forward(9)
         turtle.right(angle / number_of_sides)
@@ -102,31 +123,30 @@ def draw_whiskers(angle, number):
         turtle.forward(9)
         turtle.left(angle / number_of_sides)
 
-draw_whiskers(300, 183)
-turtle.left(183)
-draw_whiskers(200, 182)
-turtle.left(183)
-draw_whiskers(100, 181)
-turtle.left(183)
+for whisker_number_right in range(3):
+    draw_whiskers_right(300+whisker_number_right*(-100), 183+whisker_number_right*(-1))
+    turtle.left(183)
 
 
+# heart:
+turtle.up()
+turtle.goto(10, 30)
+turtle.down()
+angle=35
+# if you change what the angle equals, it changes the tilt of the heart, it can take a range of values from 20 to 80 (it can have a larger range, but it will look pretty weird because the heart will be pretty much side ways)
+turtle.left(angle)
+turtle.forward(35)
+number_of_semi_sides = 50
+def draw_semicircle(move):
+    for i in range(number_of_semi_sides//2):
+            turtle.forward(move)
+            turtle.left(360 / number_of_semi_sides)
+draw_semicircle(2)
+turtle.right(100)
+draw_semicircle(2)
+turtle.goto(10, 30)
+turtle.up()
 
 
-
-# crazy eyes:
-# def draw_circle(number_of_sides):
-#     for i in range(number_of_sides):
-#         turtle.forward(2)
-#         turtle.right(90 / number_of_sides)
-
-# for number_of_sides in range(1, 15):
-#     draw_circle(number_of_sides)
-
-
-# def draw_polygon(number_of_sides):
-#     for i in range(number_of_sides):
-#         turtle.forward(100)
-#         turtle.right(360 / number_of_sides)
-
-# for number_of_sides in range(3, 8):
-#     draw_polygon(number_of_sides)
+turtle.update()
+turtle.exitonclick()
