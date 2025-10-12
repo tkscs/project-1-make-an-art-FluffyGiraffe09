@@ -26,7 +26,7 @@ for i in range(number_of_sides//12):
     turtle.left(360 / (number_of_sides))
 turtle.up()
 turtle.right(49)
-turtle.forward(75)
+turtle.goto(-30,0)
 turtle.down()
 turtle.right(50)
 for i in range(number_of_sides//12):
@@ -65,6 +65,8 @@ elif x < y:
     turtle.goto(65, -93)
     turtle.down()
     draw_circle(x)
+
+
 turtle.up()
 turtle.goto(9, -183)
 turtle.right(123)
@@ -146,6 +148,25 @@ turtle.right(100)
 draw_semicircle(2)
 turtle.goto(10, 30)
 turtle.up()
+
+# blush
+# turtle.goto(-115,-185)
+# turtle.down()
+# turtle.left(70)
+# angle=35
+# turtle.left(angle)
+# turtle.forward(15)
+# number_of_semi_sides = 20
+# def draw_semicircle(move):
+#     for i in range(number_of_semi_sides//2):
+#             turtle.forward(move)
+#             turtle.left(360 / number_of_semi_sides)
+# draw_semicircle(2)
+# turtle.right(100)
+# draw_semicircle(2)
+# turtle.goto(-115,-185)
+# turtle.up
+# turtle.goto(0,0)
 
 
 turtle.update()
